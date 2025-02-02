@@ -1,0 +1,33 @@
+import random
+
+# Explanation of values
+'''
+1 for snake (s)
+-1 for water (w)
+0 for gun (g)
+'''
+
+# Random choice for the computer
+computer_choice = random.choice([1, -1, 0])
+
+# Get user input
+youstr = input("Enter your choice (s for snake, w for water, g for gun): ").strip().lower()
+
+# Mapping choices
+youdict = {"s": 1, "w": -1, "g": 0}
+
+# Check for invalid input
+if youstr not in youdict:
+    print("Invalid input! Please enter 's', 'w', or 'g'.")
+else:
+    you = youdict[youstr]
+    print(f"Computer chose: {computer_choice}")
+    print(f"You chose: {you}")
+
+    # Winning conditions
+    if (computer_choice == -1 and you == 1) or (computer_choice == 1 and you == 0) or (computer_choice == 0 and you == -1):
+        print("You win!")
+    elif computer_choice == you:
+        print("It's a tie!")
+    else:
+        print("You lose!")
